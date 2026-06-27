@@ -1,43 +1,61 @@
 :root{
-  /* MODOZAINT — grafito + naranja señal (tema por defecto) */
-  --bg: #1C1B1A;
-  --panel: #252321;
-  --panel-2: #2E2B28;
-  --line: #3A3631;
-  --bone: #E8E4DC;
-  --muted: #8A8580;
-  --signal: #FF6A3D;
-  --signal-dim: #7a3a25;
-  --mint: #3DDC97;
-  --mint-dim: #1f4a3a;
+  /* ZAINT OS — sistema base permanente */
+  --bg: #0D0D0D;          /* Primary Black */
+  --panel: #1A1A1A;       /* Graphite Gray */
+  --panel-2: #222222;     /* derivado, entre Graphite y Steel para profundidad de tarjetas */
+  --line: #33363A;        /* derivado de Steel Gray, atenuado para bordes sutiles */
+  --bone: #F5F5F5;        /* Pure White */
+  --muted: #6B7280;       /* Steel Gray */
+  --signal: #3B82F6;      /* Electric Blue */
+  --signal-dim: #1E3A6B;  /* derivado, Electric Blue oscurecido */
+  --mint: #22C55E;        /* Success Green */
+  --mint-dim: #14532D;    /* derivado, Success Green oscurecido */
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   transition: background 0.25s;
 }
 
-/* Dermatinta — tinta/violeta, fondo con tinte púrpura frío */
-body[data-brand="Dermatinta"]{
-  --bg: #1A1820;
-  --panel: #241F2C;
-  --panel-2: #2D2636;
-  --line: #3E3548;
-  --signal: #E63970;
-  --signal-dim: #6e1d3a;
-  --mint: #8B7CF6;
-  --mint-dim: #352c63;
+/* MODOZAINT — permanente */
+body[data-brand="MODOZAINT"]{
+  --bg: #080808;          /* Deep Black */
+  --panel: #171717;       /* Charcoal */
+  --panel-2: #202020;     /* derivado entre Charcoal y Titanium */
+  --line: #404040;        /* Titanium Gray */
+  --bone: #FAFAFA;        /* White Smoke */
+  --muted: #8A8A8A;       /* derivado, gris medio entre Charcoal y Titanium */
+  --signal: #FACC15;      /* Electric Yellow */
+  --signal-dim: #6B5A10;  /* derivado, Electric Yellow oscurecido */
+  --mint: #DC2626;        /* Danger Red (segundo acento de marca) */
+  --mint-dim: #5C1414;    /* derivado, Danger Red oscurecido */
 }
 
-/* House of Kaizen — térreo, mejora continua */
+/* DERMATINTA — permanente */
+body[data-brand="Dermatinta"]{
+  --bg: #2E3A2F;          /* Dark Forest */
+  --panel: #3A4A3B;       /* derivado, más claro que Dark Forest */
+  --panel-2: #46584A;     /* derivado */
+  --line: #4E5D4A;        /* Olive Green */
+  --bone: #F5F1EA;        /* Soft Cream */
+  --muted: #D9CFC1;       /* Warm Beige */
+  --signal: #B89B72;      /* Muted Gold */
+  --signal-dim: #5C4D39;  /* derivado, Muted Gold oscurecido */
+  --mint: #4E5D4A;        /* Olive Green (segundo acento de marca) */
+  --mint-dim: #2E3A2F;    /* Dark Forest, reutilizado como dim */
+}
+
+/* HOUSE OF KAIZEN — permanente */
 body[data-brand="House of Kaizen"]{
-  --bg: #1B1C17;
-  --panel: #232319;
-  --panel-2: #2B2B20;
-  --line: #3A3B2E;
-  --signal: #C97B3D;
-  --signal-dim: #6b441f;
-  --mint: #8FA876;
-  --mint-dim: #38442d;
+  --bg: #0A0A0A;          /* Deep Black */
+  --panel: #18181B;       /* derivado, entre Deep Black y Concrete Gray */
+  --panel-2: #222226;     /* derivado */
+  --line: #374151;        /* Concrete Gray */
+  --bone: #F3F4F6;        /* Soft White */
+  --muted: #9CA3AF;       /* derivado, gris claro entre Concrete y Soft White */
+  --signal: #6D28D9;      /* Royal Purple */
+  --signal-dim: #3B1666;  /* derivado, Royal Purple oscurecido */
+  --mint: #F97316;        /* Accent Orange (segundo acento de marca) */
+  --mint-dim: #7C3A0B;    /* derivado, Accent Orange oscurecido */
 }
 
 *{box-sizing:border-box;}
