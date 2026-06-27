@@ -163,15 +163,30 @@
         <p class="sub">Plan semana a semana de publicación.</p>
       </header>
 
-      <div class="cal-controls">
-        <select id="calMonth" class="cal-select"></select>
-        <input type="number" id="calYear" class="cal-year" value="2026">
+      <div class="view-toggle cal-toggle">
+        <button class="toggle-btn active" data-calview="plan">Plan de contenido</button>
+        <button class="toggle-btn" data-calview="google">Google Calendar (en vivo)</button>
       </div>
 
-      <div class="cal-grid-head">
-        <div>LUN</div><div>MAR</div><div>MIÉ</div><div>JUE</div><div>VIE</div><div>SÁB</div><div>DOM</div>
+      <div id="calPlanView">
+        <div class="cal-controls">
+          <select id="calMonth" class="cal-select"></select>
+          <input type="number" id="calYear" class="cal-year" value="2026">
+        </div>
+
+        <div class="cal-grid-head">
+          <div>LUN</div><div>MAR</div><div>MIÉ</div><div>JUE</div><div>VIE</div><div>SÁB</div><div>DOM</div>
+        </div>
+        <div id="calGrid" class="cal-grid"></div>
       </div>
-      <div id="calGrid" class="cal-grid"></div>
+
+      <div id="calGoogleView" class="google-cal-wrap" style="display:none;">
+        <iframe
+          id="googleCalFrame"
+          src="https://calendar.google.com/calendar/embed?src=modozaint%40gmail.com&ctz=America%2FBogota&mode=AGENDA&showTitle=0&showPrint=0&showCalendars=0&showTz=0&bgcolor=%231C1B1A"
+          style="border:0;" frameborder="0" scrolling="no"></iframe>
+        <p class="google-cal-note">Turnos de farmacia y eventos en vivo desde Google Calendar (modozaint@gmail.com).</p>
+      </div>
     </section>
 
     <!-- 05 FICHA DE CONTENIDO -->

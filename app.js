@@ -339,6 +339,16 @@ function renderCalendario(){
   }
 }
 
+document.querySelectorAll('.cal-toggle .toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.cal-toggle .toggle-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const isGoogle = btn.dataset.calview === 'google';
+    document.getElementById('calPlanView').style.display = isGoogle ? 'none' : 'block';
+    document.getElementById('calGoogleView').style.display = isGoogle ? 'block' : 'none';
+  });
+});
+
 document.getElementById('calMonth').addEventListener('change', (e) => {
   brandData().calMonthIndex = LISTS.meses.indexOf(e.target.value);
   persist(); renderCalendario();
