@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>Sala de Control — ZAINT Content OS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- RIEL DE CANALES -->
+  <nav class="rail">
+    <div class="rail-brand">
+      <div class="rail-brand-label">FUENTE</div>
+      <div class="brand-select-wrap">
+        <span class="brand-dot"></span>
+        <select id="brandSelect" class="brand-select">
+          <option value="MODOZAINT">MODOZAINT</option>
+          <option value="Dermatinta">Dermatinta</option>
+          <option value="House of Kaizen">House of Kaizen</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="rail-channels">
+      <button class="channel active" data-section="inicio">
+        <span class="tally"></span>
+        <span class="channel-icon">🏠</span>
+        <span class="channel-num">01</span>
+        <span class="channel-label">Inicio</span>
+      </button>
+      <button class="channel" data-section="pilares">
+        <span class="tally"></span>
+        <span class="channel-icon">🧱</span>
+        <span class="channel-num">02</span>
+        <span class="channel-label">Pilares</span>
+      </button>
+      <button class="channel" data-section="ideas">
+        <span class="tally"></span>
+        <span class="channel-icon">💡</span>
+        <span class="channel-num">03</span>
+        <span class="channel-label">Banco de Ideas</span>
+      </button>
+      <button class="channel" data-section="calendario">
+        <span class="tally"></span>
+        <span class="channel-icon">🗓️</span>
+        <span class="channel-num">04</span>
+        <span class="channel-label">Calendario</span>
+      </button>
+      <button class="channel" data-section="ficha">
+        <span class="tally"></span>
+        <span class="channel-icon">📄</span>
+        <span class="channel-num">05</span>
+        <span class="channel-label">Ficha</span>
+      </button>
+    </div>
+
+    <div class="rail-foot">
+      <div class="rec-dot"></div>
+      <span id="recStatus">EN VIVO</span>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO -->
+  <main class="stage">
+
+    <!-- 01 INICIO -->
+    <section class="view active" id="view-inicio">
+      <header class="view-head">
+        <span class="eyebrow">CANAL 01</span>
+        <h1>Inicio</h1>
+        <p class="sub">Resumen de producción para <strong id="inicioBrandName">MODOZAINT</strong>.</p>
+      </header>
+
+      <div class="grid-stats">
+        <div class="stat-card">
+          <div class="stat-num" id="statIdeas">0</div>
+          <div class="stat-label">Ideas en banco</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" id="statAlta">0</div>
+          <div class="stat-label">Prioridad alta</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" id="statSemana">0</div>
+          <div class="stat-label">Programadas esta semana</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" id="statPublicado">0</div>
+          <div class="stat-label">Publicadas (total)</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Distribución por pilar</h3>
+        <div id="pilarBars" class="pilar-bars"></div>
+      </div>
+
+      <div class="panel tips">
+        <h3>Notas de sala</h3>
+        <ul>
+          <li><span class="tip-icon">🎯</span> Define la audiencia antes de grabar — quién es, qué necesita.</li>
+          <li><span class="tip-icon">🪝</span> El gancho son los primeros 3 segundos. Escríbelo primero.</li>
+          <li><span class="tip-icon">🔄</span> La consistencia vence a la perfección.</li>
+          <li><span class="tip-icon">♻️</span> Un video bueno puede ser carrusel, blog y reel — reutiliza.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 02 PILARES -->
+    <section class="view" id="view-pilares">
+      <header class="view-head">
+        <span class="eyebrow">CANAL 02</span>
+        <h1>Pilares</h1>
+        <p class="sub">Los temas centrales que guían toda la estrategia de contenido.</p>
+      </header>
+      <div class="pilares-grid" id="pilaresGrid"></div>
+      <button class="btn-ghost" id="addPilarBtn">+ Agregar pilar</button>
+    </section>
+
+    <!-- 03 BANCO DE IDEAS -->
+    <section class="view" id="view-ideas">
+      <header class="view-head">
+        <span class="eyebrow">CANAL 03</span>
+        <h1>Banco de Ideas</h1>
+        <p class="sub">Registra y organiza todas las ideas antes de programarlas.</p>
+      </header>
+
+      <div class="toolbar">
+        <button class="btn-primary" id="addIdeaBtn">+ Nueva idea</button>
+        <div class="view-toggle">
+          <button class="toggle-btn active" data-view="tabla">Tabla</button>
+          <button class="toggle-btn" data-view="kanban">Kanban</button>
+        </div>
+        <input type="text" id="ideaSearch" placeholder="Buscar idea..." class="search-input">
+      </div>
+
+      <div id="ideasTabla" class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>#</th><th>Idea / Título</th><th>Red</th><th>Formato</th><th>Pilar</th>
+              <th>Prioridad</th><th>Estado</th><th>Fecha</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="ideasTableBody"></tbody>
+        </table>
+      </div>
+
+      <div id="ideasKanban" class="kanban-wrap" style="display:none;"></div>
+    </section>
+
+    <!-- 04 CALENDARIO -->
+    <section class="view" id="view-calendario">
+      <header class="view-head">
+        <span class="eyebrow">CANAL 04</span>
+        <h1>Calendario</h1>
+        <p class="sub">Plan semana a semana de publicación.</p>
+      </header>
+
+      <div class="cal-controls">
+        <select id="calMonth" class="cal-select"></select>
+        <input type="number" id="calYear" class="cal-year" value="2026">
+      </div>
+
+      <div class="cal-grid-head">
+        <div>LUN</div><div>MAR</div><div>MIÉ</div><div>JUE</div><div>VIE</div><div>SÁB</div><div>DOM</div>
+      </div>
+      <div id="calGrid" class="cal-grid"></div>
+    </section>
+
+    <!-- 05 FICHA DE CONTENIDO -->
+    <section class="view" id="view-ficha">
+      <header class="view-head">
+        <span class="eyebrow">CANAL 05</span>
+        <h1>Ficha de Contenido</h1>
+        <p class="sub">Desarrollo detallado de una pieza, de hook a checklist.</p>
+      </header>
+
+      <div class="toolbar">
+        <select id="fichaSelector" class="cal-select"><option value="">— Nueva ficha —</option></select>
+        <button class="btn-primary" id="newFichaBtn">+ Nueva ficha</button>
+        <button class="btn-danger" id="deleteFichaBtn">Eliminar</button>
+      </div>
+
+      <form class="ficha-form" id="fichaForm">
+        <h3>1. Datos generales</h3>
+        <input type="text" id="f_titulo" placeholder="Título del contenido..." class="ficha-title-input">
+        <div class="ficha-row">
+          <div><label>Red / Plataforma</label><select id="f_red"></select></div>
+          <div><label>Formato</label><select id="f_formato"></select></div>
+        </div>
+        <div class="ficha-row">
+          <div><label>Fecha publicación</label><input type="date" id="f_fecha"></div>
+          <div><label>Hora publicación</label><select id="f_hora"></select></div>
+        </div>
+        <div class="ficha-row">
+          <div><label>Estado actual</label><select id="f_estado"></select></div>
+          <div><label>Pilar de contenido</label><select id="f_pilar"></select></div>
+        </div>
+
+        <h3>2. Estrategia y audiencia</h3>
+        <div class="ficha-row">
+          <div><label>Audiencia objetivo</label><input type="text" id="f_audiencia"></div>
+          <div><label>Tono de comunicación</label><input type="text" id="f_tono"></div>
+        </div>
+        <label>Problema que resuelve</label>
+        <textarea id="f_problema" rows="2"></textarea>
+        <label>Mensaje clave / promesa de valor</label>
+        <textarea id="f_mensaje" rows="2"></textarea>
+
+        <h3>3. Estructura del contenido</h3>
+        <label>🪝 Hook — primeros 3 segundos</label>
+        <textarea id="f_hook" rows="2"></textarea>
+        <label>Desarrollo — cuerpo del contenido</label>
+        <textarea id="f_desarrollo" rows="4"></textarea>
+        <label>Cierre + CTA</label>
+        <textarea id="f_cierre" rows="2"></textarea>
+        <label>Hashtags</label>
+        <input type="text" id="f_hashtags">
+
+        <h3>4. Producción</h3>
+        <div class="ficha-row">
+          <div><label>Herramienta de edición</label><select id="f_herramienta"></select></div>
+          <div><label>Duración estimada</label><input type="text" id="f_duracion" placeholder="ej. 30s"></div>
+        </div>
+
+        <h3>5. Checklist de producción</h3>
+        <div class="checklist" id="fichaChecklist">
+          <label><input type="checkbox" data-check="guion"> Guión / script listo</label>
+          <label><input type="checkbox" data-check="musica"> Música elegida</label>
+          <label><input type="checkbox" data-check="edicion"> Edición terminada</label>
+          <label><input type="checkbox" data-check="link"> Link en bio actualizado</label>
+          <label><input type="checkbox" data-check="recursos"> Recursos visuales preparados</label>
+          <label><input type="checkbox" data-check="grabacion"> Grabación / diseño listo</label>
+          <label><input type="checkbox" data-check="subido"> Subido a plataforma</label>
+          <label><input type="checkbox" data-check="metricas"> Métricas registradas</label>
+        </div>
+
+        <button type="button" class="btn-primary" id="saveFichaBtn">Guardar ficha</button>
+      </form>
+    </section>
+
+  </main>
+</div>
+
+<!-- MODAL IDEA -->
+<div class="modal-overlay" id="ideaModalOverlay">
+  <div class="modal">
+    <h3 id="ideaModalTitle">Nueva idea</h3>
+    <label>Título</label>
+    <input type="text" id="m_titulo">
+    <div class="ficha-row">
+      <div><label>Red social</label><select id="m_red"></select></div>
+      <div><label>Formato</label><select id="m_formato"></select></div>
+    </div>
+    <div class="ficha-row">
+      <div><label>Categoría</label><select id="m_categoria"></select></div>
+      <div><label>Pilar</label><select id="m_pilar"></select></div>
+    </div>
+    <div class="ficha-row">
+      <div><label>Prioridad</label><select id="m_prioridad"></select></div>
+      <div><label>Tiempo producción</label><select id="m_tiempo"></select></div>
+    </div>
+    <div class="ficha-row">
+      <div><label>Objetivo</label><select id="m_objetivo"></select></div>
+      <div><label>Estado</label><select id="m_estado"></select></div>
+    </div>
+    <label>Notas / referencia</label>
+    <textarea id="m_notas" rows="2"></textarea>
+    <div class="modal-actions">
+      <button class="btn-ghost" id="cancelIdeaBtn">Cancelar</button>
+      <button class="btn-primary" id="saveIdeaBtn">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DÍA CALENDARIO -->
+<div class="modal-overlay" id="dayModalOverlay">
+  <div class="modal">
+    <h3 id="dayModalTitle">Programar día</h3>
+    <div class="ficha-row">
+      <div><label>Red social</label><select id="d_red"></select></div>
+      <div><label>Formato</label><select id="d_formato"></select></div>
+    </div>
+    <label>Tema / título</label>
+    <input type="text" id="d_tema">
+    <div class="ficha-row">
+      <div><label>Hora</label><select id="d_hora"></select></div>
+      <div><label>Prioridad</label><select id="d_prioridad"></select></div>
+    </div>
+    <label>Estado</label>
+    <select id="d_estado"></select>
+    <div class="modal-actions">
+      <button class="btn-ghost" id="cancelDayBtn">Cancelar</button>
+      <button class="btn-danger" id="clearDayBtn">Vaciar día</button>
+      <button class="btn-primary" id="saveDayBtn">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
