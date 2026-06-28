@@ -3,15 +3,34 @@ applySeedIdeasOnce();
 let currentBrand = localStorage.getItem('zaint_current_brand') || BRANDS[0];
 
 function applySeedIdeasOnce(){
-  if(localStorage.getItem('zaint_seed_v1_applied')) return;
+  if(!localStorage.getItem('zaint_seed_v1_applied')){
+    let changed = false;
+    BRANDS.forEach(brand => {
+      if(store[brand] && store[brand].ideas && store[brand].ideas.length === 0 && SEED_IDEAS[brand]){
+        store[brand].ideas = JSON.parse(JSON.stringify(SEED_IDEAS[brand]));
+        changed = true;
+      }
+    });
+    localStorage.setItem('zaint_seed_v1_applied', 'true');
+    if(changed) saveStore(store);
+  }
+  applySeedFichas();
+}
+
+function applySeedFichas(){
   let changed = false;
   BRANDS.forEach(brand => {
-    if(store[brand] && store[brand].ideas && store[brand].ideas.length === 0 && SEED_IDEAS[brand]){
-      store[brand].ideas = JSON.parse(JSON.stringify(SEED_IDEAS[brand]));
-      changed = true;
+    if(store[brand] && SEED_FICHAS[brand]){
+      if(!store[brand].fichas) store[brand].fichas = [];
+      SEED_FICHAS[brand].forEach(seedFicha => {
+        const exists = store[brand].fichas.some(f => f.id === seedFicha.id);
+        if(!exists){
+          store[brand].fichas.push(JSON.parse(JSON.stringify(seedFicha)));
+          changed = true;
+        }
+      });
     }
   });
-  localStorage.setItem('zaint_seed_v1_applied', 'true');
   if(changed) saveStore(store);
 }
 let ideaViewMode = 'tabla';

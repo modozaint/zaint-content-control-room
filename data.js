@@ -92,6 +92,34 @@ const SOCIAL_DASHBOARD = {
   }
 };
 
+// Fichas semilla — se aplican automáticamente una sola vez (se identifican por id, no se duplican).
+const SEED_FICHAS = {
+  'MODOZAINT': [
+    {
+      id: 'ficha_mz_claudecode_v1',
+      titulo: 'No soy programador. Esto es lo que construí solo con Claude Code.',
+      red: '📱 Instagram',
+      formato: '🎬 Reels / Video corto',
+      fecha: '',
+      hora: '',
+      estado: '🎬 En producción',
+      pilar: 'FOUNDER DISCIPLINE (AUTORIDAD)',
+      audiencia: 'Founders pequeños, builders técnicos, personas interesadas en sistemas, IA, disciplina y crecimiento personal aplicado.',
+      tono: 'Directo / seco',
+      problema: 'Cree que necesitas saber programar o tener plata para construir algo digital propio.',
+      mensaje: 'Se puede construir algo real sin ser programador, sin equipo ni inversionistas — solo con IA bien dirigida y disciplina.',
+      hook: 'No soy programador. Esto es lo que construí solo con Claude Code.',
+      desarrollo: 'Trabajo turno completo como auxiliar en una farmacia. No tengo equipo, no tengo inversionistas, no tengo tiempo libre real. Lo que sí tengo es una IA y la disciplina de usarla todos los días que puedo.\n\nEsto que ven es una sala de control que construí para manejar el contenido de mis 3 marcas — calendario conectado, banco de ideas, estadísticas reales de Instagram, todo en un solo lugar. No lo programé línea por línea. Lo construí dándole dirección clara a una IA, una y otra vez, hasta que quedó bien.',
+      cierre: 'Esto es lo que se puede construir sin ser programador, sin renunciar a tu trabajo, solo con sistema y constancia. Voy a seguir mostrando cómo avanza.',
+      hashtags: '#buildinpublic #founder #claudecode #ia #disciplina #construyendosolo',
+      herramienta: 'CapCut',
+      duracion: '45-50s',
+      guion: 'VARIANTE A — Directo / Seco\n\n[HOOK — 0-3s] (cámara cerca, serio)\n"No soy programador. Esto es lo que construí solo con Claude Code."\n\n[ESCALACIÓN — 3-15s]\n"Trabajo turno completo como auxiliar en una farmacia. No tengo equipo, no tengo inversionistas, no tengo tiempo libre real. Lo que sí tengo es una IA y la disciplina de usarla todos los días que puedo."\n\n[PAYOFF — 15-40s]\n"Esto que ven es una sala de control que construí para manejar el contenido de mis 3 marcas — calendario conectado, banco de ideas, estadísticas reales de Instagram, todo en un solo lugar. No lo programé línea por línea. Lo construí dándole dirección clara a una IA, una y otra vez, hasta que quedó bien."\n\n[CIERRE — 40-50s]\n"Esto es lo que se puede construir sin ser programador, sin renunciar a tu trabajo, solo con sistema y constancia. Voy a seguir mostrando cómo avanza."',
+      checklist: { guion: true, musica: false, edicion: false, link: false, recursos: false, grabacion: false, subido: false, metricas: false }
+    }
+  ]
+};
+
 function emptyBrandData(){
   return {
     pilares: JSON.parse(JSON.stringify(DEFAULT_PILARES)),
