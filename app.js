@@ -536,6 +536,7 @@ function loadFichaIntoForm(id){
   document.getElementById('f_desarrollo').value = f.desarrollo||'';
   document.getElementById('f_cierre').value = f.cierre||'';
   document.getElementById('f_hashtags').value = f.hashtags||'';
+  document.getElementById('f_guion').value = f.guion||'';
   document.getElementById('f_herramienta').value = f.herramienta||'';
   document.getElementById('f_duracion').value = f.duracion||'';
   document.querySelectorAll('#fichaChecklist input[type=checkbox]').forEach(cb => {
@@ -565,6 +566,7 @@ document.getElementById('saveFichaBtn').addEventListener('click', () => {
     desarrollo: document.getElementById('f_desarrollo').value,
     cierre: document.getElementById('f_cierre').value,
     hashtags: document.getElementById('f_hashtags').value,
+    guion: document.getElementById('f_guion').value,
     herramienta: document.getElementById('f_herramienta').value,
     duracion: document.getElementById('f_duracion').value,
     checklist
