@@ -1,5 +1,19 @@
 let store = loadStore();
+applySeedIdeasOnce();
 let currentBrand = localStorage.getItem('zaint_current_brand') || BRANDS[0];
+
+function applySeedIdeasOnce(){
+  if(localStorage.getItem('zaint_seed_v1_applied')) return;
+  let changed = false;
+  BRANDS.forEach(brand => {
+    if(store[brand] && store[brand].ideas && store[brand].ideas.length === 0 && SEED_IDEAS[brand]){
+      store[brand].ideas = JSON.parse(JSON.stringify(SEED_IDEAS[brand]));
+      changed = true;
+    }
+  });
+  localStorage.setItem('zaint_seed_v1_applied', 'true');
+  if(changed) saveStore(store);
+}
 let ideaViewMode = 'tabla';
 let editingIdeaId = null;
 let editingDayKey = null;
