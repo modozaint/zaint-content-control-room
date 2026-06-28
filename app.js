@@ -421,7 +421,7 @@ function renderDashboard(){
       <div class="stat-label">Cuentas alcanzadas (30d)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">${ig.topVideo.valor.toLocaleString('es-CO')}</div>
+      <div class="stat-num">${ig.topVideo ? ig.topVideo.valor.toLocaleString('es-CO') : '—'}</div>
       <div class="stat-label">Vistas del video top</div>
     </div>
     <div class="stat-card">
@@ -430,18 +430,26 @@ function renderDashboard(){
     </div>
   `;
 
-  document.getElementById('dashTopVideo').innerHTML = `
-    <p style="font-size:16px; font-weight:600; margin:0 0 6px;">${escapeHtml(ig.topVideo.titulo)}</p>
-    <p class="sub" style="margin:0;">${ig.topVideo.valor.toLocaleString('es-CO')} ${ig.topVideo.metrica} · ${ig.topVideo.fecha} · Estilo: ${escapeHtml(ig.topVideo.estilo)}</p>
-  `;
+  if(ig.topVideo){
+    document.getElementById('dashTopVideo').innerHTML = `
+      <p style="font-size:16px; font-weight:600; margin:0 0 6px;">${escapeHtml(ig.topVideo.titulo)}</p>
+      <p class="sub" style="margin:0;">${ig.topVideo.valor.toLocaleString('es-CO')} ${ig.topVideo.metrica} · ${ig.topVideo.fecha} · Estilo: ${escapeHtml(ig.topVideo.estilo)}</p>
+    `;
+  } else {
+    document.getElementById('dashTopVideo').innerHTML = `<p class="sub" style="margin:0;">${escapeHtml(ig.topVideoNota || 'Aún no identificado.')}</p>`;
+  }
 
   const rankingWrap = document.getElementById('dashRanking');
-  let rows = '<table class="data-table"><thead><tr><th>#</th><th>Video</th><th>Vistas</th><th>Fecha</th></tr></thead><tbody>';
-  ig.ranking.forEach((r, i) => {
-    rows += `<tr><td>${i+1}</td><td>${escapeHtml(r.titulo)}</td><td>${r.valor.toLocaleString('es-CO')}</td><td>${r.fecha}</td></tr>`;
-  });
-  rows += '</tbody></table>';
-  rankingWrap.innerHTML = rows;
+  if(ig.ranking && ig.ranking.length){
+    let rows = '<table class="data-table"><thead><tr><th>#</th><th>Video</th><th>Vistas</th><th>Fecha</th></tr></thead><tbody>';
+    ig.ranking.forEach((r, i) => {
+      rows += `<tr><td>${i+1}</td><td>${escapeHtml(r.titulo)}</td><td>${r.valor.toLocaleString('es-CO')}</td><td>${r.fecha}</td></tr>`;
+    });
+    rows += '</tbody></table>';
+    rankingWrap.innerHTML = rows;
+  } else {
+    rankingWrap.innerHTML = '<p class="sub">Sin ranking individual disponible todavía — solo datos agregados de la cuenta.</p>';
+  }
 
   const variantsList = document.getElementById('dashVariants');
   variantsList.innerHTML = '';

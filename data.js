@@ -73,8 +73,21 @@ const SOCIAL_DASHBOARD = {
     tiktok: { handle: '@somosdermatinta', pendiente: true }
   },
   'MODOZAINT': {
-    actualizado: null,
-    instagram: { handle: '@modozaint', pendiente: true },
+    actualizado: '2026-06-27',
+    instagram: {
+      handle: '@modozaint',
+      seguidores: 8,
+      cuentasAlcanzadas30d: 237,
+      formatoGanador: 'Reels — 100% de las visualizaciones',
+      topVideo: null,
+      topVideoNota: 'Solo hay 5 publicaciones en la cuenta y el panel de Meta no aisló cuál individual lidera — solo el agregado: 1,799 visualizaciones totales en 30 días, 97% de gente que no te sigue.',
+      ranking: [],
+      variantes: [
+        'Cuenta muy nueva (8 seguidores, 5 publicaciones) — prioridad es publicar las 6 ideas del Banco de Ideas ya cargadas, no optimizar todavía.',
+        '97% del alcance es gente que no te sigue — la cuenta sí está llegando a desconocidos pese al tamaño, buena señal para mantener ritmo de Reels.',
+        'Revisar de nuevo en 2 semanas con más publicaciones para identificar el primer patrón ganador real.'
+      ]
+    },
     tiktok: { handle: '@modozaint', pendiente: true }
   }
 };
