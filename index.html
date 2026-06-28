@@ -58,6 +58,12 @@
         <span class="channel-num">05</span>
         <span class="channel-label">Ficha</span>
       </button>
+      <button class="channel" data-section="dashboard">
+        <span class="tally"></span>
+        <span class="channel-icon">📊</span>
+        <span class="channel-num">06</span>
+        <span class="channel-label">Dashboard</span>
+      </button>
     </div>
 
     <div class="rail-foot">
@@ -259,6 +265,41 @@
 
         <button type="button" class="btn-primary" id="saveFichaBtn">Guardar ficha</button>
       </form>
+    </section>
+
+    <!-- 06 DASHBOARD -->
+    <section class="view" id="view-dashboard">
+      <header class="view-head">
+        <span class="eyebrow">CANAL 06</span>
+        <h1>Dashboard</h1>
+        <p class="sub">Estadísticas reales de Instagram/TikTok para <strong id="dashBrandName">MODOZAINT</strong> — qué funcionó y qué replicar.</p>
+      </header>
+
+      <div id="dashEmpty" class="panel" style="display:none;">
+        <h3>Sin datos todavía</h3>
+        <p class="sub">Aún no hemos revisado las redes de esta marca. Pídele a Claude que entre a Instagram/TikTok de esta marca para cargar las métricas reales.</p>
+      </div>
+
+      <div id="dashContent">
+        <div class="grid-stats" id="dashStatsGrid"></div>
+
+        <div class="panel">
+          <h3>🏆 Video con mejor desempeño (últimos 30 días)</h3>
+          <div id="dashTopVideo"></div>
+        </div>
+
+        <div class="panel">
+          <h3>📋 Ranking de contenido reciente</h3>
+          <div id="dashRanking" class="table-wrap"></div>
+        </div>
+
+        <div class="panel">
+          <h3>🔁 Variantes a aplicar para escalar</h3>
+          <ul id="dashVariants" style="margin:0; padding-left:18px; display:flex; flex-direction:column; gap:8px;"></ul>
+        </div>
+
+        <p class="google-cal-note" id="dashUpdated"></p>
+      </div>
     </section>
 
   </main>

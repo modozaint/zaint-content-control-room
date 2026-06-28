@@ -25,6 +25,60 @@ const DEFAULT_PILARES = [
   { nombre:'Conversión', color:'#E8E4DC', descripcion:'', objetivo:'', audiencia:'', formatos:'', pct:0, keywords:'' }
 ];
 
+// Snapshot manual de estadísticas reales (Instagram/TikTok) — se actualiza cuando se revisan las cuentas.
+// No es una conexión en vivo: refleja el último corte revisado manualmente.
+const SOCIAL_DASHBOARD = {
+  'House of Kaizen': {
+    actualizado: '2026-06-27',
+    instagram: {
+      handle: '@houseofkaizen',
+      seguidores: 259,
+      cuentasAlcanzadas30d: 5852,
+      formatoGanador: 'Reels — 55.5% de las interacciones',
+      topVideo: { titulo: '¿Qué es el tufting?', metrica: 'visualizaciones', valor: 5100, fecha: '2026-06-03', estilo: 'Reacción rápida / pantalla verde' },
+      ranking: [
+        { titulo: '¿Qué es el tufting?', valor: 5100, fecha: '03 jun' },
+        { titulo: 'Casi dañamos la máquina', valor: 1400, fecha: '07 jun' },
+        { titulo: 'KAYZEN: El inicio', valor: 397, fecha: '01 jun' },
+        { titulo: 'POV: Tú, transformando la realidad...', valor: 309, fecha: '17 jun' },
+        { titulo: 'Cuida tus herramientas', valor: 219, fecha: '22 jun' }
+      ],
+      variantes: [
+        'Doblar la apuesta en reacción rápida pantalla verde explicando conceptos básicos ("¿Qué es X?") — es 3.6x mejor que el resto.',
+        'Nuevas preguntas tipo FAQ con el mismo formato: "¿Cuánto cuesta un rug personalizado?", "¿Cuánto dura hacer uno?", "¿Por qué es tan caro el tufting?".',
+        'Mantener el ritmo de corte rápido (decenas de clips cortos) — es lo que distingue al video ganador de los demás.'
+      ]
+    },
+    tiktok: { handle: '@kayzenhouse', pendiente: true }
+  },
+  'Dermatinta': {
+    actualizado: '2026-06-27',
+    instagram: {
+      handle: '@dermatinta',
+      seguidores: 18,
+      cuentasAlcanzadas30d: 1031,
+      formatoGanador: 'Reels — 94.9% de las visualizaciones, 89.3% del alcance es gente que no te sigue',
+      topVideo: { titulo: 'Por qué tus tatuajes envejecen mal — la culpa es del tatuador', metrica: 'visualizaciones', valor: 1100, fecha: '2026-06-15', estilo: 'B-roll sostenido con voz en off' },
+      ranking: [
+        { titulo: 'Por qué tus tatuajes envejecen mal — la culpa es del tatuador', valor: 1100, fecha: '15 jun' },
+        { titulo: 'Casi nadie te explica sobre tus tatuajes', valor: 184, fecha: '21 jun' },
+        { titulo: 'La gente cuida más sus zapatos que sus tattoos', valor: 47, fecha: '01 jun' }
+      ],
+      variantes: [
+        'Replicar el ángulo "la culpa es de X" / mitos con otros temas: "por qué se ve opaco tu tatuaje — la culpa es de...", "por qué pica tu tatuaje nuevo — la culpa es de...".',
+        'Seguir 100% en formato Reel — casi todo el alcance (94.9%) viene de ahí, no de posts estáticos.',
+        'El alcance es 89.3% no-seguidores: el contenido se está descubriendo orgánicamente — buen momento para aumentar frecuencia.'
+      ]
+    },
+    tiktok: { handle: '@somosdermatinta', pendiente: true }
+  },
+  'MODOZAINT': {
+    actualizado: null,
+    instagram: { handle: '@modozaint', pendiente: true },
+    tiktok: { handle: '@modozaint', pendiente: true }
+  }
+};
+
 function emptyBrandData(){
   return {
     pilares: JSON.parse(JSON.stringify(DEFAULT_PILARES)),

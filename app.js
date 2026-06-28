@@ -59,6 +59,7 @@ function switchSection(name){
   if(name==='ideas') renderIdeas();
   if(name==='calendario') renderCalendario();
   if(name==='ficha') renderFichaSelector();
+  if(name==='dashboard') renderDashboard();
 }
 
 document.querySelectorAll('.channel').forEach(btn => {
@@ -391,6 +392,68 @@ document.getElementById('saveDayBtn').addEventListener('click', () => {
   document.getElementById('dayModalOverlay').classList.remove('active');
   renderCalendario(); renderInicio();
 });
+
+/* ===== DASHBOARD (redes sociales) ===== */
+function renderDashboard(){
+  document.getElementById('dashBrandName').textContent = currentBrand;
+  const data = SOCIAL_DASHBOARD[currentBrand];
+  const empty = document.getElementById('dashEmpty');
+  const content = document.getElementById('dashContent');
+
+  if(!data || !data.instagram || data.instagram.pendiente){
+    empty.style.display = 'block';
+    content.style.display = 'none';
+    return;
+  }
+  empty.style.display = 'none';
+  content.style.display = 'block';
+
+  const ig = data.instagram;
+
+  const statsGrid = document.getElementById('dashStatsGrid');
+  statsGrid.innerHTML = `
+    <div class="stat-card">
+      <div class="stat-num">${ig.seguidores}</div>
+      <div class="stat-label">Seguidores (${ig.handle})</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">${ig.cuentasAlcanzadas30d.toLocaleString('es-CO')}</div>
+      <div class="stat-label">Cuentas alcanzadas (30d)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">${ig.topVideo.valor.toLocaleString('es-CO')}</div>
+      <div class="stat-label">Vistas del video top</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="font-size:15px; line-height:1.3;">${ig.formatoGanador}</div>
+      <div class="stat-label">Formato ganador</div>
+    </div>
+  `;
+
+  document.getElementById('dashTopVideo').innerHTML = `
+    <p style="font-size:16px; font-weight:600; margin:0 0 6px;">${escapeHtml(ig.topVideo.titulo)}</p>
+    <p class="sub" style="margin:0;">${ig.topVideo.valor.toLocaleString('es-CO')} ${ig.topVideo.metrica} · ${ig.topVideo.fecha} · Estilo: ${escapeHtml(ig.topVideo.estilo)}</p>
+  `;
+
+  const rankingWrap = document.getElementById('dashRanking');
+  let rows = '<table class="data-table"><thead><tr><th>#</th><th>Video</th><th>Vistas</th><th>Fecha</th></tr></thead><tbody>';
+  ig.ranking.forEach((r, i) => {
+    rows += `<tr><td>${i+1}</td><td>${escapeHtml(r.titulo)}</td><td>${r.valor.toLocaleString('es-CO')}</td><td>${r.fecha}</td></tr>`;
+  });
+  rows += '</tbody></table>';
+  rankingWrap.innerHTML = rows;
+
+  const variantsList = document.getElementById('dashVariants');
+  variantsList.innerHTML = '';
+  ig.variantes.forEach(v => {
+    const li = document.createElement('li');
+    li.style.fontSize = '13.5px';
+    li.textContent = v;
+    variantsList.appendChild(li);
+  });
+
+  document.getElementById('dashUpdated').textContent = `Última revisión manual: ${data.actualizado}. No es una conexión en vivo — se actualiza cuando se vuelve a revisar la cuenta.`;
+}
 
 /* ===== FICHA DE CONTENIDO ===== */
 function renderFichaSelector(){
