@@ -567,6 +567,38 @@ document.getElementById('saveFichaBtn').addEventListener('click', () => {
   alert('Ficha guardada.');
 });
 
+/* ===== SINCRONIZAR DATOS ===== */
+document.getElementById('exportBtn').addEventListener('click', () => {
+  const json = JSON.stringify(store, null, 2);
+  const box = document.getElementById('syncBox');
+  box.value = json;
+  box.select();
+  const status = document.getElementById('syncStatus');
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(json).then(() => {
+      status.textContent = 'Copiado al portapapeles. Pégalo en el chat con Claude.';
+    }).catch(() => {
+      status.textContent = 'No se pudo copiar automáticamente. El texto está seleccionado arriba — cópialo manualmente.';
+    });
+  } else {
+    status.textContent = 'El texto está seleccionado arriba — cópialo manualmente.';
+  }
+});
+
+document.getElementById('importBtn').addEventListener('click', () => {
+  const box = document.getElementById('syncBox');
+  const status = document.getElementById('syncStatus');
+  try{
+    const parsed = JSON.parse(box.value);
+    store = parsed;
+    persist();
+    status.textContent = 'Datos importados correctamente. Recargando...';
+    setTimeout(() => location.reload(), 800);
+  } catch(e){
+    status.textContent = 'Error: el texto pegado no es un respaldo válido (' + e.message + ').';
+  }
+});
+
 /* ===== UTIL ===== */
 function escapeHtml(str){
   if(!str) return '';

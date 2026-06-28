@@ -116,6 +116,17 @@
           <li><span class="tip-icon">♻️</span> Un video bueno puede ser carrusel, blog y reel — reutiliza.</li>
         </ul>
       </div>
+
+      <div class="panel">
+        <h3>🔄 Sincronizar datos</h3>
+        <p class="sub" style="margin-bottom:10px;">Exporta todo (todas las marcas) para compartirlo, o importa un respaldo.</p>
+        <div class="toolbar" style="margin-bottom:10px;">
+          <button class="btn-primary" id="exportBtn">Exportar datos</button>
+          <button class="btn-ghost" id="importBtn">Importar datos</button>
+        </div>
+        <textarea id="syncBox" rows="4" placeholder="El texto exportado aparece aquí. Para importar, pega aquí el texto y presiona Importar." style="width:100%; background:var(--panel-2); border:1px solid var(--line); border-radius:6px; color:var(--bone); font-family:var(--font-mono); font-size:11px; padding:8px;"></textarea>
+        <p class="google-cal-note" id="syncStatus"></p>
+      </div>
     </section>
 
     <!-- 02 PILARES -->
